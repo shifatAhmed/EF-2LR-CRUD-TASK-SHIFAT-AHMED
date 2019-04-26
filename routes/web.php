@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index', ['posts' => \App\Post::latest()->paginate(20)]);
 });
 
 Auth::routes([
@@ -23,7 +23,3 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('posts', 'PostsController');
-
-// Route::group(['prefix' => 'home'], function () {
-//     Route::resource('posts', 'PostsController');
-// });

@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card mb-3">
-                <div class="card-header">{{ $post->title }}</div>
+                <div class="card-header">
+                    {{ $post->title }}
+                    @auth <a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-sm btn-primary float-right">Edit</a> @endauth
+                </div>
 
                 <div class="card-body">
                     <p>{{ $post->body }}</p>

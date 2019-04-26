@@ -5,9 +5,7 @@ Instructions:
 2) run "composer install".
 3) run "php artisan migrate --seed".
 
-Default Email: shifat@crud.test
-.
-Default Password: secret
+Email: shifat@crud.test and Password: secret
 
 Tasks Done:
 1) Admin Panel.

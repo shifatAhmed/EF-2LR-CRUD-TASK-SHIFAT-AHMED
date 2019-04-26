@@ -23,7 +23,7 @@
                                     <td><a href="{{ route('posts.show', ['post' => $post]) }}">{{ $post->title }}</a></td>
                                     <td>{{ $post->created_at->diffForHumans() }}</td>
                                     <td style="width: 20%">
-                                        <button class="btn btn-sm btn-primary">Edit</button>
+                                        <a href="{{ route('posts.edit', ['post' => $post]) }}" class="btn btn-sm btn-primary">Edit</a>
                                         <button class="btn btn-sm btn-danger"
                                             onclick="event.preventDefault();
                                             if (confirm('Are you sure?')) {

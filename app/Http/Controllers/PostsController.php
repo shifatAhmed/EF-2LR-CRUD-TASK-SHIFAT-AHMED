@@ -80,7 +80,9 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        if($post->user_id === Auth::id())
+            return view('posts.edit', ['post' => $post]);
+        return back()->with('error', 'Unauthorized Access!');
     }
 
     /**
@@ -92,7 +94,20 @@ class PostsController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        if($post->user_id === Auth::id()) {
+            $this->validate($request, [
+                'title' => 'required',
+                'body' => 'required'
+            ]);
+
+            $post->title = $request->input('title');
+            $post->body = $request->input('body');
+
+            $post->save();
+
+            return redirect(route('posts.show', ['post' => $post]))->with('success', 'Post Updated Successfully!');
+        }
+        return back()->with('error', 'Unauthorized Action!');
     }
 
     /**
@@ -103,8 +118,10 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        if($post->user_id === Auth::id())
+        if($post->user_id === Auth::id()) {
             $post->delete();
-        return back()->with('success', 'Post Deleted Successfully!');
+            return back()->with('success', 'Post Deleted Successfully!');
+        }
+        return back()->with('error', 'Unauthorized Action!');
     }
 }

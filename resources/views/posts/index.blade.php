@@ -24,7 +24,16 @@
                                     <td>{{ $post->created_at->diffForHumans() }}</td>
                                     <td style="width: 20%">
                                         <button class="btn btn-sm btn-primary">Edit</button>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                        <button class="btn btn-sm btn-danger"
+                                            onclick="event.preventDefault();
+                                            if (confirm('Are you sure?')) {
+                                                document.getElementById('post-delete-form-{{ $post->id }}').submit();
+                                            }"
+                                        >Delete</button>
+                                        <form id="post-delete-form-{{ $post->id }}" action="{{ route('posts.destroy', ['post' => $post]) }}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

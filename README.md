@@ -6,6 +6,7 @@ Instructions:
 3) run "php artisan migrate --seed".
 
 Default Email: shifat@crud.test
+.
 Default Password: secret
 
 Tasks Done:

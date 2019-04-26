@@ -5,7 +5,6 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><a href="{{ route('posts.create') }}">Create Post</a></li>
             <li class="list-group-item"><a href="{{ route('posts.index') }}">Posts</a></li>
-            <li class="list-group-item"><a href="#">Comments</a></li>
         </ul>
     </div>
 </div>

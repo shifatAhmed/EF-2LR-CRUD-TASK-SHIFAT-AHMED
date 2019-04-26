@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $postCount = Post::count();
-        return view('home', ['postCount' => $postCount]);
+        $commentCount = Comment::count();
+        return view('home', ['postCount' => $postCount, 'commentCount' => $commentCount]);
     }
 }
